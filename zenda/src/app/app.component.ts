@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ActiveNowDialogComponent } from './active-now-dialog/active-now-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -7,22 +8,23 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Register for stuff';
+  title = 'Activate Now';
   formGroup;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {
-    this.formGroup = this.formBuilder.group({
-      name: '',
-      email: '',
-      terms: false
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ActiveNowDialogComponent, {
+      width: '1000px',
+      panelClass: 'my-dialog',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
-
-  // tslint:disable-next-line:typedef
-  onSubmit(formData) {
-    // tslint:disable-next-line:no-string-literal
-    const name = formData['name'];
-  }
 }
+
+
+

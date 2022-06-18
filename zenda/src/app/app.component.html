@@ -1,27 +1,22 @@
-<div class="container">
-  <h1>
-    {{title}}
-  </h1>
+<mat-toolbar [ngStyle]="{height:'50px', background:'orange', display: 'block'}">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>circle</mat-icon>
+  </button>
+  <span>School name</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-card [ngStyle]="{height:'300px', background:'purple', display: 'block', color: 'white'} ">
+  <mat-card-title>Now pay your </mat-card-title>
+  <mat-card-subtitle [ngStyle]="{color: 'white'}">fee monthly @</mat-card-subtitle>
+  <mat-card-content>
+      <h1>0%</h1>
+      <p> interest</p><br>
+    <p> pre-approved credit line</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="openDialog()">Activate Now</button>
+  </mat-card-actions>
+</mat-card>
 
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-    <div class="form-group">
-      <label for="name">Full name</label>
-      <input type="text" class="form-control" id="name"
-        placeholder="Enter full name" formControlName="name" />
-    </div>
+<link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 
-    <div class="form-group">
-      <label for="name">Email address</label>
-      <input type="email" class="form-control" id="email"
-        placeholder="Enter email" formControlName="email" />
-    </div>
-
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input"
-        id="terms" formControlName="terms" />
-      <label class="form-check-label" for="terms">Agree to terms and conditions?</label>
-    </div>
-
-    <button class="btn btn-primary" type="submit">Submit Form</button>
-  </form>
-</div>
